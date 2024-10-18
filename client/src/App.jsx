@@ -12,6 +12,7 @@ import { Logout } from "./pages/Logout";
 import AdminLayout from "./Components/layouts/Admin-Layout";
 import AdminContact from "./pages/AdminContact";
 import AdminUsers from "./pages/AdminUsers";
+import UserUpdateForm from "./pages/UserUdateForm";
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="users" element={<AdminUsers />} /> {/* Nested */}
             <Route path="contacts" element={<AdminContact />} /> {/* Nested */}
+            <Route path="users/:id/edit" element={<UserUpdateForm/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

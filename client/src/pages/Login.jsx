@@ -41,7 +41,7 @@ export const Login = () => {
         storeTokenInLS(responseData.token)
         alert("registration successful");
         setUser({ email: "", password: "" });
-        navigate('/admin');
+        navigate('/');
         console.log(responseData);
       } else {
         console.log("error inside response ", "error");

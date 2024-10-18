@@ -1,4 +1,5 @@
 const Users = require('../models/user-model')
+const Contacts = require('../models/contact-model');
 
 const getAllUSers = async (req, resp) => {
   try {
@@ -18,7 +19,8 @@ const getAllUSers = async (req, resp) => {
 
 // contact Controller-------------------------------------------------------
 
-const contacts = require('../models/contact-model')
+const contacts = require('../models/contact-model');
+const { set } = require('mongoose');
 const getAllContacts = async (req, resp) => {
     try {
       const response = await contacts.find();
@@ -32,6 +34,26 @@ const getAllContacts = async (req, resp) => {
       return resp.status(404).json({ message: "error", error: error.message });
     }
   }
+
+  // -------------------------------- Deleting COntact messge Logic
+  const deleteContact = async (req, res) => {
+    try {
+        const contactId = req.params.id;
+
+        // Find the contact by ID and delete
+        const result = await Contacts.deleteOne({ _id: contactId });
+
+        if (!result.deletedCount) {
+            return res.status(404).json({ message: 'Contact not found' });
+        }
+
+        return res.status(200).json({ message: 'Contact deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
   // * ---------------------------------------------- delete Logic
   const deleteUser = async (req, res) => {
     try {
@@ -50,5 +72,41 @@ const getAllContacts = async (req, resp) => {
       return res.status(500).json({ message: 'Server error', error: error.message });
     }
   };
+
+    // * ---------------------------------------------- Getting User Logic
+  const GetUser = async (req, res) => {
+    try {
+      const userId = req.params.id;
   
-  module.exports = {getAllUSers,getAllContacts,deleteUser};
+      // Find the user by ID
+      const user = await Users.findOne({ _id: userId },{password :0});
+        return res.status(200).json(user);
+      
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Server error', error: error.message });
+    }
+  };
+
+  
+      // * ---------------------------------------------- Updating Logic
+      const updateUser = async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const updatedUserData = req.body;
+            const updatedUser = await Users.updateOne({ _id: userId }, {
+                $set: updatedUserData
+            });
+            if (updatedUser.nModified === 0) {
+                return res.status(404).json({ message: 'User not found or no changes made' });
+            }
+            return res.status(200).json({ message: 'User updated successfully' });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'Server error', error: error.message });
+        }
+    };
+    
+
+
+  module.exports = {getAllUSers,getAllContacts,deleteUser,GetUser,updateUser,deleteContact};
