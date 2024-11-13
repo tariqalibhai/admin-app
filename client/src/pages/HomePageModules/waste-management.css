@@ -1,0 +1,29 @@
+.waste-management-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; /* Space between the boxes */
+    height: 100vh;
+  }
+  
+  .box {
+    width: 50%;
+    height: 15%; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #245224; /* Custom background color */
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  

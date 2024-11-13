@@ -10,9 +10,8 @@ export const Navbar = () => {
       <header>
         <div className="container">
           <div className="logo-brand">
-            <NavLink to="/">SMART-CITY</NavLink>
+            <NavLink to="/">SMART-TOWN</NavLink>
           </div>
-
           <nav>
             <ul>
               <li>

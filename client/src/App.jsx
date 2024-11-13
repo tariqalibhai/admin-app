@@ -13,6 +13,9 @@ import AdminLayout from "./Components/layouts/Admin-Layout";
 import AdminContact from "./pages/AdminContact";
 import AdminUsers from "./pages/AdminUsers";
 import UserUpdateForm from "./pages/UserUdateForm";
+import WasteManagementPage from "./pages/HomePageModules/waste-management"
+import TrafficManagementPage from "./pages/HomePageModules/Traffic-management"
+import ComplaintForm from "./pages/HomePageModules/NewComplain"
 
 export default function App() {
   return (
@@ -21,6 +24,11 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/waste-management" element={<WasteManagementPage/>} />
+          <Route path="/traffic-management" element={<TrafficManagementPage/>} />
+          <Route path="/NewComplain" element={<ComplaintForm/>} />
+          
+
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/service" element={<Service />} />
