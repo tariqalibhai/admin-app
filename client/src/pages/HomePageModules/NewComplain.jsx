@@ -51,14 +51,13 @@ const ComplaintForm = () => {
     if (data.image) {
       formData.append("image", data.image); // Image file from input
     }
-  
+
     try {
       const response = await fetch("http://localhost:5000/api/complainform/complains", {
-        method: 'POST',
+        method: "POST",
         body: formData, // Use FormData here instead of JSON.stringify
       });
       if (response.ok) {
-        
         setFormStatus("Success! Your complaint has been submitted.");
         setShowPreview(true); // Show preview after successful submission
         alert("Complain Submitted. You can preview it now.");
@@ -72,91 +71,81 @@ const ComplaintForm = () => {
   };
 
   return (
-    <>
-      <section className="section-complaint">
-        <div className="complaint-content container">
-          <h1>Submit a Complain</h1>
-        </div>
-        <div className="container grid grid-half-cols">
-          <section className="section-form">
-            <form onSubmit={handleComplaintForm}>
-              <div>
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  value={data.username}
-                  onChange={handleInput}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={data.email}
-                  onChange={handleInput}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message">Message</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  value={data.message}
-                  onChange={handleInput}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="image">Upload Image</label>
-                <input
-                  type="file"
-                  name="image"
-                  id="image"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </div>
-              {imagePreview && (
-                <div>
-                  <img
-                    src={imagePreview}
-                    alt="Selected"
-                    style={{ width: "500px", height: "auto", marginTop: "10px" }}
-                  />
-                </div>
-              )}
-              <div>
-                <button type="submit">Submit Complaint</button>
-              </div>
-            </form>
-            {formStatus && <p>{formStatus}</p>} {/* Display form status */}
-          </section>
+    <section className="complaint-section">
+      <div className="complaint-container">
+        <div className="complaint-header">
+          <h1>Submit a Complaint</h1>
+          <p>We value your feedback. Please fill out the form below to submit your complaint.</p>
         </div>
 
-        {/* Complaint Preview Section */}
-        {/* {showPreview && (
-          <div className="complaint-preview">
-            <h2>Complaint Submitted</h2>
-            <p><strong>Username:</strong> {data.username}</p>
-            <p><strong>Email:</strong> {data.email}</p>
-            <p><strong>Message:</strong> {data.message}</p>
-            {imagePreview && (
-              <img
-                src={imagePreview}
-                alt="Complaint Preview"
-                style={{ width: "200px", height: "auto", marginTop: "10px" }}
-              />
-            )}
+        <form onSubmit={handleComplaintForm} className="complaint-form">
+          <div className="form-group-Complaint">
+            <label htmlFor="username">Username</label>
+            <input 
+            
+              type ="text"
+              name="username"
+              id="username"
+              value={data.username}
+              onChange={handleInput}
+              placeholder="Enter your username"
+              required
+            />
           </div>
-        )} */}
-      </section>
-    </>
+
+          <div className="form-group-Complaint">
+            <label htmlFor="email">Email</label>
+            <input
+            className="input-new-complain"
+              type="email"
+              name="email"
+              id="email"
+              value={data.email}
+              onChange={handleInput}
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div className="form-group-Complaint">
+            <label htmlFor="message">Message</label>
+            <textarea
+            className="input-new-complain"
+              name="message"
+              id="message"
+              value={data.message}
+              onChange={handleInput}
+              placeholder="Enter your message"
+              rows="5"
+              required
+            />
+          </div>
+
+          <div className="form-group-Complaint">
+            <label htmlFor="image">Upload Image</label>
+            <input
+            className="input-new-complain"
+              type="file"
+              name="image"
+              id="image"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+          </div>
+
+          {imagePreview && (
+            <div className="image-preview">
+              <img src={imagePreview} alt="Preview" />
+            </div>
+          )}
+
+          <button type="submit" className="submit-btn">Submit Complaint</button>
+        </form>
+
+        {formStatus && <p className="form-status">{formStatus}</p>}
+      </div>
+    </section>
   );
 };
+
 export default ComplaintForm;

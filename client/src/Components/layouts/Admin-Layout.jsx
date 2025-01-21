@@ -22,7 +22,7 @@ function AdminLayout() {
               <NavLink to="/admin/services"><GrServices /> Services</NavLink> 
             </li>
             <li>
-              <NavLink to="/admin/home">Home</NavLink> {/* Relative path */}
+              <NavLink to="/admin/adminhome">Admin_Home</NavLink> {/* Relative path */}
             </li>
           </ul>
         </nav>

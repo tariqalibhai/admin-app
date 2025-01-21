@@ -4,43 +4,60 @@ import { useAuth } from "../pages/Store/Auth";
 
 export const Navbar = () => {
   const { isLoggedIn } = useAuth();
-  console.log("login or not ", isLoggedIn);
   return (
     <>
-      <header>
+      <header className="navbar">
         <div className="container">
           <div className="logo-brand">
-            <NavLink to="/">SMART-TOWN</NavLink>
+            <NavLink to="/" className="brand-name">
+              SMART-TOWN
+            </NavLink>
           </div>
           <nav>
-            <ul>
+            <ul className="nav-links">
               <li>
-                <NavLink to="/"> Home </NavLink>
+                <NavLink to="/" className="nav-item">
+                  Home
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/about"> About </NavLink>
+                <NavLink to="/about" className="nav-item">
+                  About
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/service"> Services </NavLink>
+                <NavLink to="/service" className="nav-item">
+                  Services
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/contact"> Contact </NavLink>
+                <NavLink to="/contact" className="nav-item">
+                  Contact
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/admin"> Admin </NavLink>
+                <NavLink to="/admin" className="nav-item">
+                  Admin
+                </NavLink>
               </li>
 
               {isLoggedIn ? (
                 <li>
-                  <NavLink to="/logout">Logout</NavLink>
+                  <NavLink to="/logout" className="nav-item">
+                    Logout
+                  </NavLink>
                 </li>
               ) : (
                 <>
                   <li>
-                    <NavLink to="/register"> Register </NavLink>
+                    <NavLink to="/register" className="nav-item">
+                      Register
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/login"> Login </NavLink>
+                    <NavLink to="/login" className="nav-item">
+                      Login
+                    </NavLink>
                   </li>
                 </>
               )}

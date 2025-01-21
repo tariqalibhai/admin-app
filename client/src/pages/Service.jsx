@@ -1,43 +1,70 @@
-import React, { useState, useEffect } from "react";
-// import "Services.css"; // Import custom CSS for styling the cards
+import React from "react";
+import './Services.css'; // Import custom CSS for styling the cards
 
 const Services = () => {
-  const [services, setServices] = useState([]);
+  // Example services data
+  const services = [
+    {
+      id: 1,
+      service: "Web Development",
+      description: "We build modern, responsive, and user-friendly websites to help your business grow.",
+      price: "$1500",
+      provider: "ABC Web Solutions",
+    },
+    {
+      id: 2,
+      service: "SEO Optimization",
+      description: "Improve your website's ranking on search engines and drive more organic traffic.",
+      price: "$800",
+      provider: "SEO Experts",
+    },
+    {
+      id: 3,
+      service: "Mobile App Development",
+      description: "Create feature-rich, scalable mobile apps for iOS and Android to engage your customers.",
+      price: "$2500",
+      provider: "Tech Innovators",
+    },
+    {
+      id: 4,
+      service: "Digital Marketing",
+      description: "Boost your brand visibility through effective social media and online advertising campaigns.",
+      price: "$1000",
+      provider: "Marketing Gurus",
+    },
+    {
+      id: 5,
+      service: "Cloud Hosting",
+      description: "Reliable and secure cloud hosting services to ensure your website is always online.",
+      price: "$500/year",
+      provider: "Cloud Masters",
+    },
+    {
+      id: 6,
+      service: "Graphic Design",
+      description: "We provide creative and professional design services, including logos, banners, and more.",
+      price: "$1200",
+      provider: "Design Studio",
+    },
+  ];
 
-  // Fetch services from API
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/Data/services");
-        const data = await response.json();
-        
-        // If the response is successful, set the services data
-        if (response.ok) {
-          setServices(data.data);  // Assuming 'data' has a 'data' field containing the services array
-        } else {
-          console.error("Failed to fetch services");
-        }
-      } catch (error) {
-        console.error("Error fetching services:", error);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  // Render cards
   return (
     <div className="services-container">
-      <h1>Our Services</h1>
+      <h1 className="main-heading">Our Premium Services</h1>
       <div className="services-grid">
         {services.map((service) => (
-          <div key={service._id} className="service-card">
-            <h2>{service.service}</h2>
-            <p>{service.description}</p>
-            <p><strong>Price:</strong> {service.price}</p>
-            <p><strong>Provider:</strong> {service.provider}</p>
-            <p><strong>Description:</strong> {service.description}</p>
-            <p><strong>Service:</strong> {service.service}</p>
+          <div key={service.id} className="service-card animate-card">
+            <div className="card-header">
+              <h2>{service.service}</h2>
+            </div>
+            <div className="card-body">
+              <p>{service.description}</p>
+              <p><strong>Price:</strong> {service.price}</p>
+              <p><strong>Provider:</strong> {service.provider}</p>
+            </div>
+            <div className="card-footer">
+              <button className="service-btn">Learn More</button>
+            </div>
           </div>
         ))}
       </div>

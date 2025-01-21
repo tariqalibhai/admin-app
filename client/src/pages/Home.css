@@ -1,31 +1,97 @@
+/* Home.css */
+
 .homepage-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem; /* Space between the tiles */
-    margin: 0 auto;
-    width: 90%;
-    height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f4f9; /* Light background */
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333; /* Dark text */
+  font-size: 2.5rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  margin: 15px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tile:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tile h2 {
+  margin-top: 10px;
+  color: #555; /* Medium text color */
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.tile svg {
+  color: #4caf50; /* Icon color */
+}
+
+.tile:nth-child(1) svg { color: #e73cb1; } /* Waste Management */
+.tile:nth-child(2) svg { color: #f39c12; } /* Electricity Management */
+.tile:nth-child(3) svg { color: #2ecc71; } /* Traffic Management */
+.tile:nth-child(4) svg { color: #9b59b6; } /* Other Complaints */
+
+
+.home-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #000000;
+  background: linear-gradient(135deg, #6366f1, #0f0f0f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.home-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.15), rgba(59, 130, 246, 0.15));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease-out;
+  z-index: -1;
+}
+
+.home-heading:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+ 
+@media (min-width: 768px) {
+  .homepage-container {
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
   }
-  
-  .tile {
-    width: 60%;
-    height: 16%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #565ae1; /* Change color as needed */
-    color: rgb(255, 255, 255);
-    font-size: 3rem; /* Large font for emphasis */
-    font-weight: bold;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .tile:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
+}

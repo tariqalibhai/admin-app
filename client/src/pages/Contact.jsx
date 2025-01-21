@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './Contact.css'; // Import your CSS file for styling
 import { useAuth } from "./Store/Auth";
 
 const defaultContactFormData = {
@@ -31,6 +32,13 @@ export const Contact = () => {
 
   const handleContactForm = async (e) => {
     e.preventDefault();
+
+    // Add form validation (optional)
+    if (!validateForm(data)) {
+      setFormStatus("Please fill in all required fields and enter a valid email address.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:5000/api/form/contact", {
         method: "POST",
@@ -55,60 +63,70 @@ export const Contact = () => {
     }
   };
 
-  return (
-    <>
-      <section className="section-contact">
-        <div className="contact-content container">
-          <h1 className="main-heading">Contact Us</h1>
-        </div>
-        <div className="container grid grid-half-cols">
-          <div className="contact-img">
-            <img src="/images/support.png" alt="always ready to help you" />
-          </div>
+  // Function to validate form (optional)
+  const validateForm = (formData) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return (
+      formData.username &&
+      formData.email.trim() !== "" &&
+      emailRegex.test(formData.email) &&
+      formData.message.trim() !== ""
+    );
+  };
 
-          <section className="section-form">
-            <form onSubmit={handleContactForm}>
-              <div>
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  value={data.username}
-                  onChange={handleInput}
-                  autoCapitalize="off"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={data.email}
-                  onChange={handleInput}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message">Message</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  value={data.message}
-                  onChange={handleInput}
-                  required
-                />
-              </div>
-              <div>
-                <button type="submit">Submit</button>
-              </div>
-            </form>
-            {formStatus && <p>{formStatus}</p>} {/* Display form status */}
-          </section>
+  return (
+    <section className="section-contact">
+      <div className="contact-content container">
+        <h1 className="main-heading">Contact Us</h1>
+        <p className="subheading">We are here to help you! Drop us a message.</p>
+      </div>
+      <div className="container">
+        <div className="contact-img">
+          <img src="/images/support.png" alt="Always ready to help you" />
         </div>
-      </section>
-    </>
+
+        <section className="section-form">
+          <form onSubmit={handleContactForm}>
+            <div className="form-group">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                value={data.username}
+                onChange={handleInput}
+                autoComplete="off"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={data.email}
+                onChange={handleInput}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                name="message"
+                id="message"
+                value={data.message}
+                onChange={handleInput}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <button type="submit" className="submit-btn">Submit</button>
+            </div>
+          </form>
+          {formStatus && <p className="form-status">{formStatus}</p>} {/* Display form status with a class for styling */}
+        </section>
+      </div>
+    </section>
   );
 };

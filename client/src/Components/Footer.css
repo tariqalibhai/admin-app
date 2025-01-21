@@ -1,0 +1,141 @@
+/* Reset default margin */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply sticky footer layout */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f8fa; /* Optional: Background color for the body */
+}
+
+/* Ensure the main content section stretches */
+main {
+  flex: 1;
+}
+
+/* Footer main styles */
+.footer {
+  background: linear-gradient(to right, #2b1a4d, #b21f1f, #ff8c00); /* Gradient for visual interest */
+  color: #fff;
+  width: 100%;
+  padding: 2rem 0 1rem 0;
+  margin-top: 3rem;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+/* Content wrapper */
+.footer-content {
+  display: flex;
+  justify-content: space-between; 
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section styling */
+.footer-section {
+  flex: 1;
+  padding: 0 1rem;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer-section h4 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.slogan {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Navigation links */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-nav a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.footer-nav a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Bottom copyright section */
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin-bottom: 2rem;
+  }
+
+  .footer-nav {
+    align-items: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

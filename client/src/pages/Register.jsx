@@ -1,5 +1,5 @@
 
-import { useState,react } from "react";
+import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { useAuth } from "./Store/Auth";
 
@@ -76,7 +76,7 @@ try {
                 <br />
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label htmlFor="username">username</label>
+                    <label htmlFor="username">User Name</label>
                     <input
                       type="text"
                       name="username"
@@ -86,7 +86,7 @@ try {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email">email</label>
+                    <label htmlFor="email">Email</label>
                     <input
                       type="text"
                       name="email"
@@ -96,7 +96,7 @@ try {
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone">phone</label>
+                    <label htmlFor="phone">Contact</label>
                     <input
                       type="number"
                       name="phone"
@@ -105,7 +105,7 @@ try {
                     />
                   </div>
                   <div>
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">Password</label>
                     <input
                       type="password"
                       name="password"
