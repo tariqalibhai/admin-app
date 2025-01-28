@@ -1,14 +1,14 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import Service from "./pages/Service";
 import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
-import { Navbar } from './Components/Navbar';
-import { PageNotFound } from "./pages/PageNotFount";
+import { Navbar } from "./Components/Navbar";
+import { PageNotFound } from "./pages/PageNotFound";
 import { Logout } from "./pages/Logout";
 import AdminLayout from "./Components/layouts/Admin-Layout";
 import AdminContact from "./pages/AdminContact";
@@ -18,9 +18,9 @@ import UserUpdateForm from "./pages/UserUdateForm";
 import WasteManagementPage from "./pages/HomePageModules/waste-management";
 import TrafficManagementPage from "./pages/HomePageModules/Traffic-management";
 import ComplaintForm from "./pages/HomePageModules/NewComplain";
-import Footer from "./Components/Footer"; // Import the Footer component
+import Footer from "./Components/Footer";
 
-export default function App() {
+function App() {
   return (
     <div>
       <Router>
@@ -38,16 +38,23 @@ export default function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<PageNotFound />} />
 
-          {/* Nested routes under /admin */}
-          <Route path="/admin/*" element={<AdminLayout />}>
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
             <Route path="adminHome" element={<AdminHome />} />
             <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContact />} />
             <Route path="users/:id/edit" element={<UserUpdateForm />} />
           </Route>
         </Routes>
-        <Footer /> {/* Add Footer at the bottom */}
+        <ConditionalFooter /> {/* Add Conditional Footer */}
       </Router>
     </div>
   );
 }
+
+function ConditionalFooter() {
+  const location = useLocation();
+  return location.pathname === "/" ? <Footer /> : null;
+}
+
+export default App;

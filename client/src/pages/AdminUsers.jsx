@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './AdminUsers.css';
 import { useAuth } from "./Store/Auth";
 import { Link } from "react-router-dom";
 
@@ -73,18 +74,20 @@ function AdminUsers() {
                 <td>{currUser.email}</td>
                 <td>{currUser.phone}</td>
                 <td>
-                  <Link to={`/admin/users/${currUser._id}/edit`}>Edit</Link>
+                  <Link
+                    style={{
+                      backgroundColor: "blue",
+                      color: "white",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "8px 17epx",
+                      borderRadius:"10px"
+                    }}
+                     to={`/admin/users/${currUser._id}/edit`}>Edit</Link>
                 </td>
                 <td>
                 <button
                     onClick={() => deleteUser(currUser._id)}
-                    style={{
-                      backgroundColor: "red",
-                      color: "white",
-                      border: "none",
-                      cursor: "pointer",
-                      padding: "5px 10px",
-                    }}
                   >
                     Delete
                   </button>

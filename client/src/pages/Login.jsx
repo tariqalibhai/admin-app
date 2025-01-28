@@ -2,6 +2,8 @@
 import { useState,react } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./Store/Auth";
+import './Login.css';
+
 
 export const Login = () => {
   const [user, setUser] = useState({

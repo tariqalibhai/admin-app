@@ -8,18 +8,23 @@ const WasteManagementPage = () => {
 
   return (
     <div className="waste-management-container">
-        <h1>Waste Management</h1>
-      <div className="box" onClick={() => navigate('/NewComplain')}>
-        <FaPlusSquare size={50} style={{ marginRight: '10px' }} />
-        <h2>New Complaint</h2>
-      </div>
-      <div className="box" onClick={() => navigate('/view-complaints')}>
-        <FaListAlt size={50} style={{ marginRight: '10px' }} />
-        <h2>View Complaints</h2>
-      </div>
-      <div className="box" onClick={() => navigate('/view-profile')}>
-        <FaUserCircle size={50} style={{ marginRight: '10px' }} />
-        <h2>View Profile</h2>
+      <h1 className="page-title">Waste Management Portal</h1>
+      <div className="glass-card-container">
+        <div className="glass-card" onClick={() => navigate('/NewComplain')}>
+          <FaPlusSquare className="glass-card-icon" />
+          <h2 className="glass-card-title">New Complaint</h2>
+          <p className="glass-card-description">File your waste-related complaints quickly.</p>
+        </div>
+        <div className="glass-card" onClick={() => navigate('/view-complaints')}>
+          <FaListAlt className="glass-card-icon" />
+          <h2 className="glass-card-title">View Complaints</h2>
+          <p className="glass-card-description">Check and track submitted complaints.</p>
+        </div>
+        <div className="glass-card" onClick={() => navigate('/view-profile')}>
+          <FaUserCircle className="glass-card-icon" />
+          <h2 className="glass-card-title">View Profile</h2>
+          <p className="glass-card-description">Manage your profile details seamlessly.</p>
+        </div>
       </div>
     </div>
   );
